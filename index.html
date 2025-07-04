@@ -1,11 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <title>Redirecting to UI.Vision Macro</title>
-    <meta http-equiv="refresh" content="0; URL='https://ui.vision/rpa/play?macro=Chuju&direct=1&closeRPA=1'" />
+    <meta charset="UTF-8">
+    <title>Run UI.Vision Macro</title>
+    <script>
+      function runMacro() {
+        const macroCommand = {
+          cmd: "runMacro",
+          macro: "Chuju",  // ← マクロ名
+          storage: "local",  // または "cloud"
+          closeRPA: true
+        };
+        // UI.Vision拡張に送信
+        window.postMessage(macroCommand, "*");
+      }
+
+      // ページ読み込み後すぐ実行
+      window.onload = () => {
+        setTimeout(runMacro, 1000);  // 1秒待ってから起動（拡張読み込み安定化のため）
+      };
+    </script>
   </head>
   <body>
-    <p>If you are not redirected, <a href="https://ui.vision/rpa/play?macro=Chuju&direct=1&closeRPA=1">click here</a>.</p>
+    <h1>📽️ UI.Vision マクロを実行中...</h1>
+    <p>このページを開くと自動で UI.Vision マクロ「Chuju」が実行されます。</p>
   </body>
 </html>
