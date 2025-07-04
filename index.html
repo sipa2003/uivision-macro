@@ -28,11 +28,14 @@
     try {
       var evt = new CustomEvent('kantuSaveAndRunMacro', {
         detail: {
+          macro: "Chuju",
           html: document.documentElement.outerHTML,
           noImport: true,
           storageMode: 'browser'
         }
       })
+
+
 
       window.dispatchEvent(evt)
       var intervalTimer = setInterval(() => window.dispatchEvent(evt), 1000);
